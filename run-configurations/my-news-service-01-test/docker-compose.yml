@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  my-news-service-01-test:
+    image: ${TEST_CONTAINER_IMAGE}
+    ports:
+      - ${HOST_PORT_PREFIX}55:5555
+    volumes:
+      - ${HOST_MSR_LICENSE_FILE}:/tmp/license.xml
+      - ./application.properties:/tmp/application.properties
+    environment:
+      - SAG_IS_LICENSE_FILE=/tmp/license.xml
+      - SAG_IS_CONFIG_PROPERTIES=/tmp/application.properties
+      - SMTP_HOST_NAME
+      - SMTP_HOST_PORT
+      - SMTP_USER_EMAIL
+      - SMTP_USER_PASS
+      # NewsAPI service
+      - NEWSAPI_BASE_URL
+      - NEWSAPI_API_KEY
+      - PUSH_TO_EMAIL
