@@ -1,6 +1,7 @@
 version: '3.8'
 
 services:
+
   item-master-fo-01-dev:
     image: ${CONTAINER_REGISTRY_URL}/${CONTAINER_IMAGE_REPOSITORY}:${CONTAINER_IMAGE_TAG}
     ports:
@@ -25,7 +26,26 @@ services:
     ports:
       - ${HOST_PORT_PREFIX}90:9000
 
+  postgres:
+    image: postgres
+    hostname: postgres
+    container_name: postgres
+    restart: always
+    ports:
+      - ${HOST_PORT_PREFIX}32:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mypgdbpass
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  adminer:
+    image: adminer
+    ports:
+      - ${HOST_PORT_PREFIX}80:8080
+
 volumes:
+  postgres_data: {}
   um_data: {}
   um_logs: {}
   um_users: {}
