@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  item-master-fo-01-dev:
+    image: ${CONTAINER_REGISTRY_URL}/${CONTAINER_IMAGE_REPOSITORY}:${CONTAINER_IMAGE_TAG}
+    ports:
+      - ${HOST_PORT_PREFIX}55:5555
+    volumes:
+      - ${HOST_MSR_LICENSE_FILE}:/tmp/license.xml
+      - ./application.properties:/tmp/application.properties
+      # Our Code
+      - ../../code/is-packages/ESFOXItemMasterReceive/:${GUEST_IS_HOME}/packages/ESFOXItemMasterReceive/
+      - ../../code/is-packages/ESFOXItemMasterReceiveLocalTest/:${GUEST_IS_HOME}/packages/ESFOXItemMasterReceiveLocalTest/
+    environment:
+      - SAG_IS_LICENSE_FILE=/tmp/license.xml
+      - SAG_IS_CONFIG_PROPERTIES=/tmp/application.properties
+

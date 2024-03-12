@@ -4,15 +4,11 @@
   <value name="enabled">yes</value>
   <value name="system_package">no</value>
   <value name="version">1.0</value>
-  <record name="startup_services" javaclass="com.wm.util.Values">
-    <null name="My.NewsService.util:setPackageACLs"/>
-  </record>
+  <null name="startup_services"/>
   <null name="shutdown_services"/>
   <null name="replication_services"/>
-  <record name="requires" javaclass="com.wm.util.Values">
-    <value name="MyMailService">*</value>
-  </record>
-  <value name="listACL">Default</value>
+  <null name="requires"/>
+  <null name="listACL"/>
   <value name="webappLoad">yes</value>
   <value name="reloadWithDependentPackage">yes</value>
 </Values>
