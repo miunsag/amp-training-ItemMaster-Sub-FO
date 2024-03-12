@@ -15,3 +15,17 @@ services:
       - SAG_IS_LICENSE_FILE=/tmp/license.xml
       - SAG_IS_CONFIG_PROPERTIES=/tmp/application.properties
 
+  um:
+    image:  ${UM_CONTAINER_REGISTRY_URL}/${UM_CONTAINER_IMAGE_REPOSITORY}:${UM_CONTAINER_IMAGE_TAG}
+    volumes:
+      - um_data:/opt/softwareag/UniversalMessaging/server/umserver/data/
+      - ./local-um-license/:/opt/softwareag/UniversalMessaging/server/umserver/licence/
+      - um_logs:/opt/softwareag/UniversalMessaging/server/umserver/logs/
+      - um_users:/opt/softwareag/common/conf/
+    ports:
+      - ${HOST_PORT_PREFIX}90:9000
+
+volumes:
+  um_data: {}
+  um_logs: {}
+  um_users: {}
