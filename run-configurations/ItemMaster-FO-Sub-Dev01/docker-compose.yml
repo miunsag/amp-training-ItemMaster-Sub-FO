@@ -12,6 +12,8 @@ services:
       # Our Code
       - ../../code/is-packages/ESFOXItemMasterReceive/:${GUEST_IS_HOME}/packages/ESFOXItemMasterReceive/
       - ../../code/is-packages/ESFOXItemMasterReceiveLocalTest/:${GUEST_IS_HOME}/packages/ESFOXItemMasterReceiveLocalTest/
+      # Dependency
+      - ${XCEIDOCS_PACKAGE_LOCATION}:${GUEST_IS_HOME}/packages/XCEIDocs/
     environment:
       - SAG_IS_LICENSE_FILE=/tmp/license.xml
       - SAG_IS_CONFIG_PROPERTIES=/tmp/application.properties
@@ -29,7 +31,6 @@ services:
   postgres:
     image: postgres
     hostname: postgres
-    container_name: postgres
     restart: always
     ports:
       - ${HOST_PORT_PREFIX}32:5432
