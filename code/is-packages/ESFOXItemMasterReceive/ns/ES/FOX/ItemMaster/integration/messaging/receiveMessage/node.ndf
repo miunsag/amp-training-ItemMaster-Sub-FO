@@ -3,7 +3,7 @@
 <Values version="2.0">
   <value name="node_type">webMethods/trigger</value>
   <value name="node_subtype">unknown</value>
-  <value name="node_nsName">ES.FOX.Receives.ItemMaster:receiveMessage</value>
+  <value name="node_nsName">ES.FOX.ItemMaster.integration.messaging:receiveMessage</value>
   <value name="node_pkg">ESFOXItemMasterReceive</value>
   <value name="node_comment"></value>
   <value name="is_public">false</value>
@@ -26,7 +26,6 @@
     <value name="inDoubtDetection">false</value>
     <value name="resolveWithHistory">false</value>
     <value name="resolutionHistoryTTL">7200000</value>
-    <value name="uniqueId">O30xJBw14A61ZmT7STqj88yMuP0=</value>
     <value name="executeUser">Administrator</value>
     <array name="conditions" type="record" depth="1">
       <record javaclass="com.wm.util.Values">
@@ -36,7 +35,7 @@
             <value name="messageType">XC.EIDocs.ERP:ItemMasterPublishable</value>
             <value name="filter"></value>
           </record>
-          <value name="serviceName">ES.FOX.Receives.ItemMaster:processMessage</value>
+          <value name="serviceName">ES.FOX.ItemMaster.integration.messaging:processMessage</value>
           <value name="conditionName">Condition1</value>
         </record>
       </record>
@@ -53,5 +52,6 @@
     <value name="docsPrefetchMin">4</value>
     <value name="priorityEnabled">false</value>
     <null name="namedObjectString"/>
+    <value name="uniqueId">dUaqd4TMNyJ+gTQ2EIZ9xnKjTJg=</value>
   </record>
 </Values>

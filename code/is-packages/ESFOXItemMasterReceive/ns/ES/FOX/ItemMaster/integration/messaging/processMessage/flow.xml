@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <FLOW VERSION="3.0" CLEANUP="true">
+  <COMMENT>Init</COMMENT>
 
   <!-- nodes -->
 
@@ -183,7 +184,7 @@
 
   <!-- nodes -->
 
-<INVOKE TIMEOUT="" SERVICE="ES.FOX.Receives.ItemMaster:processItemMaster" VALIDATE-IN="$none" VALIDATE-OUT="$none">
+<INVOKE TIMEOUT="" SERVICE="ES.FOX.ItemMaster.logic:processItemMaster" VALIDATE-IN="$none" VALIDATE-OUT="$none">
   <COMMENT></COMMENT>
 
   <!-- nodes -->
