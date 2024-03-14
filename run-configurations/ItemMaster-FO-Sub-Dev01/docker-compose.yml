@@ -17,7 +17,11 @@ services:
     environment:
       - SAG_IS_LICENSE_FILE=/tmp/license.xml
       - SAG_IS_CONFIG_PROPERTIES=/tmp/application.properties
-
+      - POSTGRES_SERVER=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
   um:
     image:  ${UM_CONTAINER_REGISTRY_URL}/${UM_CONTAINER_IMAGE_REPOSITORY}:${UM_CONTAINER_IMAGE_TAG}
     volumes:
