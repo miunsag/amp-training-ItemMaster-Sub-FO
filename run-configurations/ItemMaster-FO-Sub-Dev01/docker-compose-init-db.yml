@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+
+  postgres:
+    image: postgres
+    hostname: postgres
+    restart: always
+    ports:
+      - ${HOST_PORT_PREFIX}32:5432
+    environment:
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  dbc:
+    image: ${DBC_CONTAINER_IMAGE}:${DBC_CONTAINER_IMAGE_TAG}
+    ports:
+      - ${HOST_PORT_PREFIX}80:8080
+    volumes:
+      - ./scripts/dbcinit/:/mnt/scripts
+    environment:
+      - DBSERVER_HOSTNAME=postgres
+      - DBSERVER_PORT=5432
+      - DBSERVER_DATABASE_NAME=postgres
+      - DBSERVER_USER_NAME=${POSTGRES_USER}
+      - DBSERVER_PASSWORD=${POSTGRES_PASSWORD}
+      - DBC_COMPONENT_NAME=ALL
+      - DBC_COMPONENT_VERSION=latest
+    depends_on:
+      postgres:
+        condition: service_started
+        
+    entrypoint: /mnt/scripts/initializePostgresDb.sh
+
+
+volumes:
+  postgres_data: {}
